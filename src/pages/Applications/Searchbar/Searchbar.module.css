@@ -1,0 +1,33 @@
+.main {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: text;
+  color: #0f172a;
+  gap: 8px;
+  flex: 1;
+  border-radius: 5.5px;
+  padding-left: 10px;
+  background-color: #f1f5f9;
+}
+
+.main input {
+  align-self: stretch;
+  flex: 1;
+  font-weight: 500;
+  min-width: none;
+  width: 100%;
+  max-width: none;
+}
+
+.main svg {
+  color: #cbd5e1;
+}
+
+.main input::placeholder {
+  color: #94a3b8;
+}
+
+.main input::-webkit-input-placeholder {
+  color: #94a3b8;
+}

@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  align-items: center;
+  padding: 11px 22px;
+  gap: 11px;
+  cursor: pointer;
+  font-weight: 550;
+  color: #334155;
+}
+
+.main:hover {
+  background-color: #f1f5f9;
+}
+
+.isActive {
+  color: #2563eb;
+  background-color: #dbeafe !important;
+}

@@ -1,0 +1,15 @@
+.main {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  z-index: 1000;
+  background-color: white;
+}
+
+.window {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+}

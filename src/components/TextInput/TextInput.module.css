@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: #475569;
+  font-weight: 550;
+  font-size: 16px;
+}
+
+.main input {
+  height: 44px;
+  padding: 0 11px;
+  cursor: text;
+  color: #0f172a;
+  border-radius: 5.5px;
+  background-color: #f1f5f9;
+}
+
+.main input::placeholder {
+  color: #94a3b8;
+}
+
+.main input::-webkit-input-placeholder {
+  color: #94a3b8;
+}
