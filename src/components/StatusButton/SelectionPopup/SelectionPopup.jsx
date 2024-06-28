@@ -8,7 +8,7 @@ import DataContext from "../../../contexts/DataContext";
 const SelectionPopup = ({onClose, isOpen, data}) => {
   const {updateApplicationStatus, data: databaseData} = useContext(DataContext)
   const handleStatusClick = async (key) => {
-    await updateApplicationStatus(databaseData.currentSessionId, data.id, {status: key})
+    await updateApplicationStatus(databaseData.currentSessionId, data.id, key)
     onClose()
   }
   return (
