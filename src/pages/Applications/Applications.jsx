@@ -9,15 +9,23 @@ import DataContext from "../../contexts/DataContext.jsx";
 const Applications = ({}) => {
   const { data } = useContext(DataContext);
   const [isAddApplicationPopupVisible, setIsAddApplicationPopupVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // Find the session with the matching session ID
   const currentSession = data?.sessions?.find(session => session.id === data?.currentSessionId);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredApplications = currentSession?.applications?.filter(application =>
+    application.jobTitle.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
       <div className={styles.main}>
         <div className={styles.navbar}>
-          <Searchbar />
+          <Searchbar onChange={handleSearchChange} value={searchQuery} />
           <button
             className={styles.addButton}
             title="Add Application"
@@ -29,8 +37,10 @@ const Applications = ({}) => {
         </div>
         <div className={styles.listContainer}>
           <div className={styles.list}>
-            <h1 className={styles.title}>Applications</h1>
-            {currentSession?.applications?.map((application) => (
+            <h1 className={styles.title}>
+              {searchQuery !== "" ? `Search: ${searchQuery}` : "Applications"}
+            </h1>
+            {filteredApplications?.map((application) => (
               <Application key={application.id} data={application} />
             ))}
           </div>
