@@ -30,6 +30,7 @@ const Applications = ({}) => {
         </div>
         <div className={styles.listContainer}>
           <div className={styles.list}>
+            <h1 className={styles.title}>Applications</h1>
             {testApplications.map((application, index) => (
               <Application data={application} />
             ))}

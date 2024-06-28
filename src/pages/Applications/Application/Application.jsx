@@ -1,20 +1,35 @@
+import { useState } from "react";
 import StatusButton from "../../../components/StatusButton/StatusButton";
 import styles from "./Application.module.css";
+import ApplicationPopup from "../../../components/ApplicationPopup/ApplicationPopup";
 
-const Application = ({data}) => {
+const Application = ({ data }) => {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const onClickHandler = (e) => {
+    e.stopPropagation();
+    setIsPopupVisible(true);
+  };
   return (
-    <div className={styles.main}>
+    <>
+      <button className={styles.main} onClick={onClickHandler}>
         <div className={styles.textContainer}>
-            <p className={styles.job}>{data.job}</p>
-            <p className={styles.company}>{data.company}</p>
-            <div className={styles.detailsContainer}>
-              <p>Applied on 23.04.2024</p>
-            </div>
+          <p className={styles.job}>{data.job}</p>
+          <p className={styles.company}>{data.company}</p>
+          <div className={styles.detailsContainer}>
+            <p>Applied on 23.04.2024</p>
+          </div>
         </div>
         <div className={styles.buttonContainer}>
-            <StatusButton status={data.status}/>
+          <StatusButton status={data.status} />
         </div>
-    </div>
+      </button>
+      {!!isPopupVisible && (
+        <ApplicationPopup
+          data={data}
+          onClose={() => setIsPopupVisible(false)}
+        />
+      )}
+    </>
   );
 };
 

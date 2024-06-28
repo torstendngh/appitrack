@@ -6,6 +6,7 @@
   cursor: pointer;
   font-weight: 550;
   color: #334155;
+  border-radius: 5.5px;
 }
 
 .main:hover {

@@ -7,11 +7,16 @@ import SelectionPopup from "./SelectionPopup/SelectionPopup";
 
 const StatusButton = ({ status = "draft" }) => {
   const [isActive, setIsActive] = useState(false);
+  const onClickHandler = (e) => {
+    e.stopPropagation();
+    setIsActive((x) => !x)
+  }
   return (
     <>
       <button
+        stopPropagation
         className={styles.main}
-        onClick={() => setIsActive((x) => !x)}
+        onClick={onClickHandler}
         style={{ color: applicationStatus[status].color }}
       >
         {applicationStatus[status].label}

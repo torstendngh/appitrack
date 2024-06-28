@@ -40,9 +40,16 @@
 .list {
   display: flex;
   flex-direction: column;
-  padding: 128px 0;
+  padding: 64px 0;
   max-width: 800px;
   width: 100%;
   gap: 11px;
   margin: 0 auto;
+}
+
+.title {
+  font-size: 32px;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 22px;
 }

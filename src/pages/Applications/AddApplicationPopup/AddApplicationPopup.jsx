@@ -9,8 +9,8 @@ const AddApplicationPopup = ({ onClose }) => {
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
-            <h1>Create New Application</h1>
-            <span>
+            <h1 className={styles.title}>Create New Application</h1>
+            <span className={styles.description}>
               Create a new application to save the current status, notes and the
               history
             </span>
@@ -20,9 +20,9 @@ const AddApplicationPopup = ({ onClose }) => {
           </button>
         </div>
         <div className={styles.content}>
-          <TextInput label={"Company"} />
-          <TextInput label={"Job Title"} />
-          <span>Extra information</span>
+          <TextInput label={"Company"} required/>
+          <TextInput label={"Job Title"} required/>
+          <h2 className={styles.subtitle}>Extra information</h2>
           <TextInput label={"Job Posting Link"} />
           <TextInput label={"Notes"} />
           <button className={styles.createButton}>

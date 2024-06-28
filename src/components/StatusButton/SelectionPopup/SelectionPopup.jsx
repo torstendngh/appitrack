@@ -9,8 +9,8 @@ const SelectionPopup = ({currentStatus, onClose}) => {
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
-            <h1>Select Status</h1>
-            <span>Select the new status for the job "" at "". It will be added to the history automatically.</span>
+            <h1 className={styles.title}>Select Status</h1>
+            <span className={styles.description}>Select the new status for the job "" at "". It will be added to the history automatically.</span>
           </div>
           <button className={styles.closeButton} onClick={() => onClose()}>
             <Icon icon={"close"}/>

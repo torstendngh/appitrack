@@ -8,14 +8,23 @@ export default {
             endDate: null,
             applications: [
                 {
+                    id: "",
                     company: "",
                     job: "",
                     status: "",
                     notes: "",
-                    history: [
+                    jobLink: "",
+                    companyWebsite: "",
+                    appliedOn: "",
+                    lastUpdated: "",
+                    interviews: [
                         {
-                            time: null,
-                            action: ""
+                            id: "",
+                            date: "",
+                            lenght: "",
+                            location: "",
+                            appointees: [],
+                            notes: ""
                         }
                     ]
                 }
