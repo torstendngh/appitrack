@@ -38,7 +38,8 @@
   border: 1px solid #f1f5f9;
   height: 44px;
   border-radius: 5.5px;
-  padding: 0 22px;
+  padding: 22px 44px;
+  align-self: center;
   font-weight: 500;
   gap: 8px;
   box-shadow: 0 2px 3px #f1f5f9;

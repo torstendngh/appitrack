@@ -14,7 +14,7 @@ const StatusButton = ({ status = "draft" }) => {
   return (
     <>
       <button
-        stopPropagation
+        type="button"
         className={styles.main}
         onClick={onClickHandler}
         style={{ color: applicationStatus[status].color }}
@@ -22,7 +22,7 @@ const StatusButton = ({ status = "draft" }) => {
         {applicationStatus[status].label}
         <Icon icon={applicationStatus[status].icon} />
       </button>
-      {!!isActive && <SelectionPopup currentStatus={status} onClose={() => setIsActive(false)}/>}
+      <SelectionPopup isOpen={isActive} currentStatus={status} onClose={() => setIsActive(false)}/>
     </>
   );
 };

@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    padding: 4px;
+    gap: 4px;
+    border-top: 1px solid #e2e8f0;
+    background-color: white;
+}
+
+@media (min-width: 700px) {
+  .main {
+    display: none;
+  }
+}

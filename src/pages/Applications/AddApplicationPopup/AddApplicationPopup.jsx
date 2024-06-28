@@ -2,10 +2,17 @@ import styles from "./AddApplicationPopup.module.css";
 import Popup from "../../../components/Popup/Popup";
 import Icon from "../../../components/Icon/Icon";
 import TextInput from "../../../components/TextInput/TextInput";
+import { useContext } from "react";
+import DataContext from "../../../contexts/DataContext";
 
-const AddApplicationPopup = ({ onClose }) => {
+const AddApplicationPopup = ({ onClose, isOpen }) => {
+  const {addApplication, data} = useContext(DataContext)
+
+  const handleAddApplication = () => {
+    addApplication(data.current)
+  }
   return (
-    <Popup>
+    <Popup isOpen={isOpen}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>

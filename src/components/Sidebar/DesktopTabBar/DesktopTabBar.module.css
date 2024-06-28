@@ -1,0 +1,23 @@
+.main {
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e2e8f0;
+  padding: 16px;
+  gap: 4px;
+}
+
+@media (max-width: 700px) {
+  .main {
+    display: none;
+  }
+}
+
+.main h1 {
+  font-weight: 600;
+  padding: 22px;
+  font-size: 24px;
+  color: #1e293b;
+  display: inline;
+  font-feature-settings: "cv11", "cv06", "cv10", "cv12";
+}

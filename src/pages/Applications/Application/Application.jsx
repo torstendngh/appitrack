@@ -6,8 +6,8 @@ import ApplicationPopup from "../../../components/ApplicationPopup/ApplicationPo
 const Application = ({ data }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const onClickHandler = (e) => {
-    e.stopPropagation();
     setIsPopupVisible(true);
+    console.log("application clicked");
   };
   return (
     <>
@@ -23,12 +23,12 @@ const Application = ({ data }) => {
           <StatusButton status={data.status} />
         </div>
       </button>
-      {!!isPopupVisible && (
-        <ApplicationPopup
-          data={data}
-          onClose={() => setIsPopupVisible(false)}
-        />
-      )}
+
+      <ApplicationPopup
+        isOpen={isPopupVisible}
+        data={data}
+        onClose={() => setIsPopupVisible(false)}
+      />
     </>
   );
 };

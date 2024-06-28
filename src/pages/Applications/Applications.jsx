@@ -1,11 +1,8 @@
-import Avatar from "../../components/Avatar/Avatar";
 import Icon from "../../components/Icon/Icon";
 import Application from "./Application/Application";
 import styles from "./Applications.module.css";
 import Searchbar from "./Searchbar/Searchbar";
 import testApplications from "../../constants/testApplications.js";
-import Popup from "../../components/Popup/Popup.jsx";
-import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import { useState } from "react";
 import AddApplicationPopup from "./AddApplicationPopup/AddApplicationPopup.jsx";
 
@@ -24,9 +21,8 @@ const Applications = ({}) => {
             onClick={() => setIsAddApplicationPopupVisible(true)}
           >
             <Icon icon={"add_filled"} />
-            Add Application
+            <span className={styles.text}>Add Application</span>
           </button>
-          <Avatar />
         </div>
         <div className={styles.listContainer}>
           <div className={styles.list}>
@@ -37,11 +33,11 @@ const Applications = ({}) => {
           </div>
         </div>
       </div>
-      {!!isAddApplicationPopupVisible && (
-        <AddApplicationPopup
-          onClose={() => setIsAddApplicationPopupVisible(false)}
-        />
-      )}
+
+      <AddApplicationPopup
+        isOpen={isAddApplicationPopupVisible}
+        onClose={() => setIsAddApplicationPopupVisible(false)}
+      />
     </>
   );
 };

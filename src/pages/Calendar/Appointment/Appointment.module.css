@@ -1,5 +1,5 @@
 .main {
-  border: 1px solid #f1f5f9;
+  border: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -7,12 +7,14 @@
   padding: 16px;
   gap: 8px;
   border-radius: 11px;
-  box-shadow: 0 2px 3px #f1f5f9;
+  box-shadow: 0 2px 3px #f1f5f9, 0 -1px #e2e8f0 inset;
   cursor: pointer;
+  background-color: white;
 }
 
 .main:hover {
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
+  background-color: #f1f5f9;
 }
 
 .time {

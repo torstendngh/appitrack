@@ -16,7 +16,10 @@
   cursor: text;
   color: #0f172a;
   border-radius: 5.5px;
-  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+
+  margin: 2px 0;
+  transition: border 0.1s ease, box-shadow 0.1s ease, margin 0.1s ease;
 }
 
 .main input::placeholder {
@@ -29,4 +32,10 @@
 
 .required {
   color: #dc2626;
+}
+
+.main input:focus {
+  border: 2px solid #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+  margin: 2px;
 }

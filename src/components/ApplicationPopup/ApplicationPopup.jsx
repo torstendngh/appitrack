@@ -2,15 +2,15 @@ import Icon from "../Icon/Icon";
 import Popup from "../Popup/Popup";
 import styles from "./ApplicationPopup.module.css";
 
-const ApplicationPopup = ({onClose, data}) => {
+const ApplicationPopup = ({onClose, data, isOpen}) => {
   return (
-    <Popup>
+    <Popup isOpen={isOpen}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>Application</h1>
           </div>
-          <button className={styles.closeButton} onClick={() => onClose()}>
+          <button className={styles.closeButton} onClick={onClose}>
             <Icon icon={"close"} />
           </button>
         </div>

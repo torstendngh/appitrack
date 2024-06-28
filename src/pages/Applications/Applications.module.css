@@ -5,12 +5,13 @@
   overflow: auto;
 }
 
-.main .navbar {
+.navbar {
   display: flex;
   align-items: center;
   padding: 16px;
   gap: 16px;
   background-color: white;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .addButton {
@@ -25,6 +26,17 @@
   border-radius: 5.5px;
   background-color: #2563eb;
   color: white;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .addButton {
+    padding: 0;
+    width: 44px;
+  }
+  .addButton > .text {
+    display: none;
+  }
 }
 
 .addButton:hover {
@@ -35,6 +47,7 @@
   flex: 1;
   overflow: auto;
   padding: 0 16px;
+  background-color: #f8fafc;
 }
 
 .list {

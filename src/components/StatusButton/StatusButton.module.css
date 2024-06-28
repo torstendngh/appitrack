@@ -3,12 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #f1f5f9;
   height: 44px;
   border-radius: 5.5px;
   padding: 0 22px;
   font-weight: 500;
   gap: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  box-shadow: 0 2px 3px #f8fafc, 0 -1px #e2e8f0 inset;
 }
 
 .main:hover {

@@ -1,21 +1,37 @@
-import React, { createContext, useState, useEffect } from "react";
-import defaultData from "../constants/defaultData";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { db } from "../firebase/config";
+import { doc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
+import AuthContext from "./AuthContext";
 
 const DataContext = createContext(null);
 
 export const DataProvider = ({ children }) => {
-  const [data, setData] = useState(() => {
-    const initialData = { ...defaultData };
-    if (initialData.sessions.length === 0) {
-      initialData.sessions.push(createNewSession());
-    } else {
-      initialData.sessions = initialData.sessions.map(session => ({
-        ...session,
-        applications: [],
-      }));
+  const { currentUser } = useContext(AuthContext);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    let unsubscribe;
+    if (currentUser) {
+      const userDoc = doc(db, "users", currentUser.uid);
+      unsubscribe = onSnapshot(userDoc, (docSnap) => {
+        if (docSnap.exists()) {
+          setData(docSnap.data());
+        }
+      });
     }
-    return initialData;
-  });
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, [currentUser]);
+
+  const updateFirestore = async (newData) => {
+    if (currentUser) {
+      const userDoc = doc(db, "users", currentUser.uid);
+      await setDoc(userDoc, newData);
+    }
+  };
 
   const createNewSession = () => ({
     id: crypto.randomUUID(),
@@ -25,7 +41,7 @@ export const DataProvider = ({ children }) => {
     applications: [],
   });
 
-  const createApplication = (sessionId) => ({
+  const createApplication = () => ({
     id: crypto.randomUUID(),
     company: "",
     job: "",
@@ -38,7 +54,7 @@ export const DataProvider = ({ children }) => {
     interviews: [],
   });
 
-  const createInterview = (applicationId) => ({
+  const createInterview = () => ({
     id: crypto.randomUUID(),
     date: "",
     length: "",
@@ -47,121 +63,207 @@ export const DataProvider = ({ children }) => {
     notes: "",
   });
 
-  const addSession = () => {
+  const addSession = async () => {
     const newSession = createNewSession();
-    setData(prevData => ({
-      ...prevData,
-      sessions: [...prevData.sessions, newSession],
-    }));
+    const newData = {
+      ...data,
+      sessions: [...data.sessions, newSession],
+      currentSessionId: newSession.id, // Set the current session to the new session
+    };
+    setData(newData);
+    await updateFirestore(newData);
+    return newSession;
   };
 
-  const removeSession = (sessionId) => {
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.filter(session => session.id !== sessionId),
-    }));
+  const removeSession = async (sessionId) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.filter((session) => session.id !== sessionId),
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
-  const editSession = (sessionId, updatedSession) => {
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { ...session, ...updatedSession } : session
+  const editSession = async (sessionId, updatedFields) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId ? { ...session, ...updatedFields } : session
       ),
-    }));
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
-  const addApplication = (sessionId) => {
-    const newApplication = createApplication();
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { 
-          ...session, 
-          applications: [...session.applications, newApplication] 
-        } : session
+  const addApplication = async (sessionId, applicationFields = {}) => {
+    const newApplication = { ...createApplication(), ...applicationFields };
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: [...session.applications, newApplication],
+            }
+          : session
       ),
-    }));
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
-  const removeApplication = (sessionId, applicationId) => {
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { 
-          ...session, 
-          applications: session.applications.filter(app => app.id !== applicationId) 
-        } : session
+  const removeApplication = async (sessionId, applicationId) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: session.applications.filter(
+                (app) => app.id !== applicationId
+              ),
+            }
+          : session
       ),
-    }));
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
-  const editApplication = (sessionId, applicationId, updatedApplication) => {
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { 
-          ...session, 
-          applications: session.applications.map(app => 
-            app.id === applicationId ? { ...app, ...updatedApplication } : app
-          ) 
-        } : session
+  const editApplication = async (sessionId, applicationId, updatedFields) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: session.applications.map((app) =>
+                app.id === applicationId ? { ...app, ...updatedFields } : app
+              ),
+            }
+          : session
       ),
-    }));
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
-  const addInterview = (sessionId, applicationId) => {
-    const newInterview = createInterview();
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { 
-          ...session, 
-          applications: session.applications.map(app => 
-            app.id === applicationId ? { 
-              ...app, 
-              interviews: [...app.interviews, newInterview] 
-            } : app
-          ) 
-        } : session
+  const updateApplicationStatus = async (sessionId, applicationId, status) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: session.applications.map((app) =>
+                app.id === applicationId
+                  ? { ...app, status, lastUpdated: new Date().toISOString() }
+                  : app
+              ),
+            }
+          : session
       ),
-    }));
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
-  const removeInterview = (sessionId, applicationId, interviewId) => {
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { 
-          ...session, 
-          applications: session.applications.map(app => 
-            app.id === applicationId ? { 
-              ...app, 
-              interviews: app.interviews.filter(interview => interview.id !== interviewId) 
-            } : app
-          ) 
-        } : session
-      ),
-    }));
+  const changeApplicationStatus = async (sessionId, applicationId, status) => {
+    await updateApplicationStatus(sessionId, applicationId, status);
   };
 
-  const editInterview = (sessionId, applicationId, interviewId, updatedInterview) => {
-    setData(prevData => ({
-      ...prevData,
-      sessions: prevData.sessions.map(session => 
-        session.id === sessionId ? { 
-          ...session, 
-          applications: session.applications.map(app => 
-            app.id === applicationId ? { 
-              ...app, 
-              interviews: app.interviews.map(interview => 
-                interview.id === interviewId ? { ...interview, ...updatedInterview } : interview
-              ) 
-            } : app
-          ) 
-        } : session
+  const changeCurrentSessionId = async (sessionId) => {
+    const newData = {
+      ...data,
+      currentSessionId: sessionId,
+    };
+    setData(newData);
+    await updateFirestore(newData);
+  };
+
+  const addInterview = async (
+    sessionId,
+    applicationId,
+    interviewFields = {}
+  ) => {
+    const newInterview = { ...createInterview(), ...interviewFields };
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: session.applications.map((app) =>
+                app.id === applicationId
+                  ? {
+                      ...app,
+                      interviews: [...app.interviews, newInterview],
+                    }
+                  : app
+              ),
+            }
+          : session
       ),
-    }));
+    };
+    setData(newData);
+    await updateFirestore(newData);
+  };
+
+  const removeInterview = async (sessionId, applicationId, interviewId) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: session.applications.map((app) =>
+                app.id === applicationId
+                  ? {
+                      ...app,
+                      interviews: app.interviews.filter(
+                        (interview) => interview.id !== interviewId
+                      ),
+                    }
+                  : app
+              ),
+            }
+          : session
+      ),
+    };
+    setData(newData);
+    await updateFirestore(newData);
+  };
+
+  const editInterview = async (
+    sessionId,
+    applicationId,
+    interviewId,
+    updatedFields
+  ) => {
+    const newData = {
+      ...data,
+      sessions: data.sessions.map((session) =>
+        session.id === sessionId
+          ? {
+              ...session,
+              applications: session.applications.map((app) =>
+                app.id === applicationId
+                  ? {
+                      ...app,
+                      interviews: app.interviews.map((interview) =>
+                        interview.id === interviewId
+                          ? { ...interview, ...updatedFields }
+                          : interview
+                      ),
+                    }
+                  : app
+              ),
+            }
+          : session
+      ),
+    };
+    setData(newData);
+    await updateFirestore(newData);
   };
 
   const value = {
@@ -172,16 +274,15 @@ export const DataProvider = ({ children }) => {
     addApplication,
     removeApplication,
     editApplication,
+    updateApplicationStatus,
+    changeApplicationStatus,
+    changeCurrentSessionId,
     addInterview,
     removeInterview,
     editInterview,
   };
 
-  return (
-    <DataContext.Provider value={value}>
-      {children}
-    </DataContext.Provider>
-  );
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
 
 export default DataContext;

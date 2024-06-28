@@ -1,0 +1,56 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 16px;
+  }
+  
+  .title {
+    font-weight: 600;
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 22px;
+    color: #94a3b8;
+  }
+  
+  .description {
+    font-weight: 500;
+    color: #94a3b8;
+  }
+  
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+  
+  .closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 44px;
+    border-radius: 22px;
+    color: #0f172a;
+    background-color: #f1f5f9;
+    margin-left: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  
+  .closeButton:hover {
+    background-color: #e2e8f0;
+  }
+  
+  .titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+  }

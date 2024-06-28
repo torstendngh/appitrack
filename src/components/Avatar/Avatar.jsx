@@ -5,12 +5,12 @@ import AuthContext from "../../contexts/AuthContext";
 
 const Avatar = ({}) => {
 
-  const {currentUser, logout} = useContext(AuthContext)
+  const {currentUser} = useContext(AuthContext)
 
   return (
-    <button className={styles.main} onClick={logout}>
+    <div className={styles.main}>
       {!!currentUser ? <img src={currentUser.photoURL} alt={`${currentUser.displayName}'s profile`} /> : <Icon icon={"user_filled"} />}
-    </button>
+    </div>
   );
 };
 

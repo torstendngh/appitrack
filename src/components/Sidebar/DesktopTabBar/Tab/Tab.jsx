@@ -1,8 +1,8 @@
-import Icon from "../../Icon/Icon";
+import Icon from "../../../Icon/Icon";
 import styles from "./Tab.module.css";
 import { NavLink } from "react-router-dom";
 
-const Tab = ({ label, icon, to }) => {
+const Tab = ({ label, icon, iconActive, to }) => {
   return (
     <NavLink
       className={({ isActive }) =>
@@ -10,8 +10,12 @@ const Tab = ({ label, icon, to }) => {
       }
       to={to}
     >
-      <Icon icon={icon} />
+      {({isActive}) => (
+        <>
+        <Icon icon={isActive ? iconActive : icon} />
       {label}
+        </>
+      )}
     </NavLink>
   );
 };
