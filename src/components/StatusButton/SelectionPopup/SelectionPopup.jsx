@@ -2,15 +2,22 @@ import Popup from "../../Popup/Popup";
 import styles from "./SelectionPopup.module.css";
 import applicationStatuses from "../../../constants/applicationStatuses";
 import Icon from "../../Icon/Icon";
+import { useContext } from "react";
+import DataContext from "../../../contexts/DataContext";
 
-const SelectionPopup = ({currentStatus, onClose, isOpen}) => {
+const SelectionPopup = ({onClose, isOpen, data}) => {
+  const {updateApplicationStatus, data: databaseData} = useContext(DataContext)
+  const handleStatusClick = async (key) => {
+    await updateApplicationStatus(databaseData.currentSessionId, data.id, {status: key})
+    onClose()
+  }
   return (
     <Popup isOpen={isOpen}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>Select Status</h1>
-            <span className={styles.description}>Select the new status for the job "" at "". It will be added to the history automatically.</span>
+            <span className={styles.description}>Select the new status for the job "{data.jobTitle}" at "{data.company}". It will be added to the history automatically.</span>
           </div>
           <button className={styles.closeButton} onClick={onClose}>
             <Icon icon={"close"}/>
@@ -18,12 +25,12 @@ const SelectionPopup = ({currentStatus, onClose, isOpen}) => {
         </div>
         <div className={styles.list}>
           {Object.keys(applicationStatuses).map((key) => (
-            <button className={styles.status} style={{color: applicationStatuses[key].color}}>
+            <button key={key} className={styles.status} style={{color: applicationStatuses[key].color}} onClick={() => handleStatusClick(key)}>
               <Icon icon={applicationStatuses[key].icon} />
               {applicationStatuses[key].label}
               <div style={{flex: 1}}></div>
               {
-                currentStatus == key &&
+                data.status == key &&
                 <Icon icon={"tick_filled"}/>
               }
             </button>

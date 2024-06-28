@@ -13,14 +13,14 @@ const Application = ({ data }) => {
     <>
       <button className={styles.main} onClick={onClickHandler}>
         <div className={styles.textContainer}>
-          <p className={styles.job}>{data.job}</p>
+          <p className={styles.job}>{data.jobTitle}</p>
           <p className={styles.company}>{data.company}</p>
           <div className={styles.detailsContainer}>
             <p>Applied on 23.04.2024</p>
           </div>
         </div>
         <div className={styles.buttonContainer}>
-          <StatusButton status={data.status} />
+          <StatusButton data={data} />
         </div>
       </button>
 

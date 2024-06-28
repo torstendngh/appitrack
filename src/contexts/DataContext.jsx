@@ -44,7 +44,7 @@ export const DataProvider = ({ children }) => {
   const createApplication = () => ({
     id: crypto.randomUUID(),
     company: "",
-    job: "",
+    jobTitle: "",
     status: "",
     notes: "",
     jobLink: "",
@@ -96,7 +96,11 @@ export const DataProvider = ({ children }) => {
   };
 
   const addApplication = async (sessionId, applicationFields = {}) => {
-    const newApplication = { ...createApplication(), ...applicationFields };
+    const newApplication = { 
+      id: crypto.randomUUID(), // Assuming you have a function to generate unique IDs
+      ...createApplication(), 
+      ...applicationFields 
+    };
     const newData = {
       ...data,
       sessions: data.sessions.map((session) =>
@@ -166,10 +170,6 @@ export const DataProvider = ({ children }) => {
     };
     setData(newData);
     await updateFirestore(newData);
-  };
-
-  const changeApplicationStatus = async (sessionId, applicationId, status) => {
-    await updateApplicationStatus(sessionId, applicationId, status);
   };
 
   const changeCurrentSessionId = async (sessionId) => {
@@ -275,7 +275,6 @@ export const DataProvider = ({ children }) => {
     removeApplication,
     editApplication,
     updateApplicationStatus,
-    changeApplicationStatus,
     changeCurrentSessionId,
     addInterview,
     removeInterview,

@@ -15,7 +15,7 @@ const ApplicationPopup = ({onClose, data, isOpen}) => {
           </button>
         </div>
         <div className={styles.content}>
-          {data.job}
+          {data.jobTitle}
           {data.company}
         </div>
       </div>

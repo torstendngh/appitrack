@@ -2,13 +2,16 @@ import Icon from "../../components/Icon/Icon";
 import Application from "./Application/Application";
 import styles from "./Applications.module.css";
 import Searchbar from "./Searchbar/Searchbar";
-import testApplications from "../../constants/testApplications.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AddApplicationPopup from "./AddApplicationPopup/AddApplicationPopup.jsx";
+import DataContext from "../../contexts/DataContext.jsx";
 
 const Applications = ({}) => {
-  const [isAddApplicationPopupVisible, setIsAddApplicationPopupVisible] =
-    useState(false);
+  const { data } = useContext(DataContext);
+  const [isAddApplicationPopupVisible, setIsAddApplicationPopupVisible] = useState(false);
+
+  // Find the session with the matching session ID
+  const currentSession = data?.sessions?.find(session => session.id === data?.currentSessionId);
 
   return (
     <>
@@ -27,8 +30,8 @@ const Applications = ({}) => {
         <div className={styles.listContainer}>
           <div className={styles.list}>
             <h1 className={styles.title}>Applications</h1>
-            {testApplications.map((application, index) => (
-              <Application data={application} />
+            {currentSession?.applications?.map((application) => (
+              <Application key={application.id} data={application} />
             ))}
           </div>
         </div>

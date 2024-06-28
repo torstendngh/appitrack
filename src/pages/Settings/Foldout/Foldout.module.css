@@ -1,23 +1,31 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  box-shadow: 0 2px 3px #f1f5f9, 0 -1px #e2e8f0 inset;
+  background-color: white;
+  color: #1e293b;
+  overflow: hidden;
 }
 
 .content {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid #e2e8f0;
 }
 
 .button {
   cursor: pointer;
-  color: #1e293b;
+  cursor: pointer;
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 16px;
+
 }
 
 .button:hover {
-  text-decoration: underline;
+  background-color: #f1f5f9;
 }

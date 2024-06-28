@@ -29,7 +29,10 @@ const Sessions = ({}) => {
           </span>
           {data?.sessions.map(session => (
             <button key={session.id} className={styles.session} onClick={() => changeCurrentSessionId(session.id)}>
-              <span className={styles.name}>{session.id}</span>
+              <div className={styles.textContainer}>
+                <span className={styles.name}>{session.id}</span>
+                <span className={styles.total}>Applications: {session.applications.length}</span>
+              </div>
               {data?.currentSessionId == session.id && (
                 <span className={styles.active}>Currently Active</span>
               )}

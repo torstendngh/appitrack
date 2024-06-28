@@ -1,5 +1,5 @@
 export default {
-    currentSession: 0,
+    currentSessionId: 0,
     sessions: [
         {
             id: "",
@@ -10,7 +10,7 @@ export default {
                 {
                     id: "",
                     company: "",
-                    job: "",
+                    jobTitle: "",
                     status: "",
                     notes: "",
                     jobLink: "",

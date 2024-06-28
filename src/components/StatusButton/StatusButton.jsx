@@ -5,7 +5,7 @@ import { useState } from "react";
 import Popup from "../Popup/Popup";
 import SelectionPopup from "./SelectionPopup/SelectionPopup";
 
-const StatusButton = ({ status = "draft" }) => {
+const StatusButton = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
   const onClickHandler = (e) => {
     e.stopPropagation();
@@ -17,12 +17,12 @@ const StatusButton = ({ status = "draft" }) => {
         type="button"
         className={styles.main}
         onClick={onClickHandler}
-        style={{ color: applicationStatus[status].color }}
+        style={{ color: applicationStatus[data.status].color }}
       >
-        {applicationStatus[status].label}
-        <Icon icon={applicationStatus[status].icon} />
+        {applicationStatus[data.status].label}
+        <Icon icon={applicationStatus[data.status].icon} />
       </button>
-      <SelectionPopup isOpen={isActive} currentStatus={status} onClose={() => setIsActive(false)}/>
+      <SelectionPopup isOpen={isActive} data={data} onClose={() => setIsActive(false)}/>
     </>
   );
 };
