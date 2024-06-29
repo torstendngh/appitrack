@@ -1,10 +1,11 @@
 import styles from "./EditPopup.module.css";
 import Popup from "../Popup/Popup";
 import TextInput from "../TextInput/TextInput"
+import Icon from "../Icon/Icon";
 
-const EditPopup = ({ onClose }) => {
+const EditPopup = ({ onClose, isOpen, label }) => {
   return (
-    <Popup>
+    <Popup isOpen={isOpen}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
@@ -14,7 +15,8 @@ const EditPopup = ({ onClose }) => {
             <Icon icon={"close"} />
           </button>
         </div>
-        <TextInput/>
+        <TextInput label={label}/>
+        <button>Save</button>
       </div>
     </Popup>
   );

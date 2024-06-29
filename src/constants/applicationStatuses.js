@@ -2,7 +2,7 @@ export default {
     "draft": {
         label: "Draft",
         icon: "applicationStatus_draft",
-        color: "#334155"
+        color: "#64748b"
     },
     "sent": {
         label: "Sent",

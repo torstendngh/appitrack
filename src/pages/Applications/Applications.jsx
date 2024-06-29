@@ -5,20 +5,25 @@ import Searchbar from "./Searchbar/Searchbar";
 import { useContext, useState } from "react";
 import AddApplicationPopup from "./AddApplicationPopup/AddApplicationPopup.jsx";
 import DataContext from "../../contexts/DataContext.jsx";
+import Button from "../../components/Button/Button.jsx";
 
 const Applications = ({}) => {
   const { data } = useContext(DataContext);
-  const [isAddApplicationPopupVisible, setIsAddApplicationPopupVisible] = useState(false);
+  const [isAddApplicationPopupVisible, setIsAddApplicationPopupVisible] =
+    useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const currentSession = data?.sessions?.find(session => session.id === data?.currentSessionId);
+  const currentSession = data?.sessions?.find(
+    (session) => session.id === data?.currentSessionId
+  );
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredApplications = currentSession?.applications?.filter(application =>
-    application.jobTitle.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredApplications = currentSession?.applications?.filter(
+    (application) =>
+      application.jobTitle.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -26,14 +31,15 @@ const Applications = ({}) => {
       <div className={styles.main}>
         <div className={styles.navbar}>
           <Searchbar onChange={handleSearchChange} value={searchQuery} />
-          <button
-            className={styles.addButton}
+          <Button
+            isPrimary
+            shrinks
             title="Add Application"
             onClick={() => setIsAddApplicationPopupVisible(true)}
           >
             <Icon icon={"add_filled"} />
             <span className={styles.text}>Add Application</span>
-          </button>
+          </Button>
         </div>
         <div className={styles.listContainer}>
           <div className={styles.list}>

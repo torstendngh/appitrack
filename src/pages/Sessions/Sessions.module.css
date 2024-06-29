@@ -31,36 +31,6 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
-.addButton {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 44px;
-  padding: 0 22px;
-  gap: 11px;
-  font-weight: 600;
-  border-radius: 5.5px;
-  background-color: #2563eb;
-  color: white;
-  flex-shrink: 0;
-  margin-left: auto;
-}
-
-@media (max-width: 700px) {
-  .addButton {
-    padding: 0;
-    width: 44px;
-  }
-  .addButton > .text {
-    display: none;
-  }
-}
-
-.addButton:hover {
-  background-color: #3b82f6;
-}
-
 .title {
   font-size: 32px;
   color: #1e293b;

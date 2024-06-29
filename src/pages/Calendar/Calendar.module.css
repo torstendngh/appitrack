@@ -64,34 +64,3 @@
   flex: 1;
   border-top: 1px solid #e2e8f0;
 }
-
-.button {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 44px;
-  padding: 0 22px;
-  gap: 11px;
-  font-weight: 600;
-  border-radius: 5.5px;
-  border: 1px solid #e2e8f0;
-  background-color: white;
-  flex-shrink: 0;
-  color: #334155;
-  box-shadow: 0 2px 3px #f8fafc, 0 -1px #e2e8f0 inset;
-}
-
-@media (max-width: 700px) {
-  .button {
-    padding: 0;
-    width: 44px;
-  }
-  .button > .text {
-    display: none;
-  }
-}
-
-.button:hover {
-  background-color: #f8fafc;
-}

@@ -5,6 +5,7 @@ import DataContext from "../../contexts/DataContext";
 import AuthContext from "../../contexts/AuthContext";
 import Foldout from "./Foldout/Foldout";
 import Avatar from "../../components/Avatar/Avatar";
+import Button from "../../components/Button/Button";
 
 const Settings = ({}) => {
   const { data } = useContext(DataContext);
@@ -22,15 +23,17 @@ const Settings = ({}) => {
           <h2 className={styles.subtitle}>Account</h2>
         </div>
         <div className={styles.userContainer}>
-          <Avatar/>
+          <Avatar />
           <span className={styles.name}>{currentUser?.displayName}</span>
-        <button className={styles.button} onClick={logout}>Logout</button>
+          <Button onClick={logout}>Logout</Button>
         </div>
         <div className={styles.subtitleContainer}>
           <Icon icon={"data"} />
           <h2 className={styles.subtitle}>Data</h2>
         </div>
-        <button className={styles.button}>Export Data</button>
+        <div>
+          <Button>Export Data</Button>
+        </div>
         <div className={styles.subtitleContainer}>
           <Icon icon={"bug"} />
           <h2 className={styles.subtitle}>Debug</h2>
@@ -43,7 +46,7 @@ const Settings = ({}) => {
           </div>
         </Foldout>
 
-        <Foldout label={"User Data"} isOpenByDefault>
+        <Foldout label={"User Data"}>
           <div className={styles.code}>
             const data =&nbsp;
             {JSON.stringify(data, null, 2)}

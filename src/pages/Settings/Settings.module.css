@@ -45,35 +45,13 @@
   margin: 44px 0 22px 0;
 }
 
-.button {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e2e8f0;
-  height: 44px;
-  border-radius: 5.5px;
-  padding: 0 22px;
-  font-weight: 500;
-  gap: 8px;
-  background-color: white;
-  align-self: flex-start;
-  color: #334155;
-  box-shadow: 0 2px 3px #f8fafc, 0 -1px #e2e8f0 inset;
-}
-
-.button:hover {
-  background-color: #f8fafc;
-}
-
 .code {
   font-family: monospace, monospace;
   font-size: 16px;
-  line-height: 1;
+  line-height: 1.2;
   white-space: pre-wrap;
-  color: #10b981;
+  color: #334155;
   border-radius: 5.5;
-  background-color: #ecfdf5;
   padding: 11px;
   overflow-x: auto;
 }

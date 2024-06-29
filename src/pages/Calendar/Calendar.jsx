@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Icon from "../../components/Icon/Icon";
 import Appointment from "./Appointment/Appointment";
 import styles from "./Calendar.module.css";
+import Button from "../../components/Button/Button";
 
 const HeaderContainer = React.forwardRef(({ date, isToday }, ref) => (
   <div className={styles.headerContainer} ref={ref}>
@@ -33,10 +34,10 @@ const Calendar = () => {
   return (
     <div className={styles.main}>
       <div className={styles.navbar}>
-        <button className={styles.button} onClick={scrollToToday}>
+        <Button shrinks onClick={scrollToToday}>
           <Icon icon={"calendarToday_filled"} />
           <span className={styles.text}>Today</span>
-        </button>
+        </Button>
       </div>
       <div className={styles.listContainer}>
         <div className={styles.list}>

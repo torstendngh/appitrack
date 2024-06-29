@@ -4,12 +4,14 @@ import applicationStatuses from "../../../constants/applicationStatuses";
 import Icon from "../../Icon/Icon";
 import { useContext } from "react";
 import DataContext from "../../../contexts/DataContext";
+import showToast from "../../Toast/Toast";
 
 const SelectionPopup = ({onClose, isOpen, data}) => {
   const {updateApplicationStatus, data: databaseData} = useContext(DataContext)
   const handleStatusClick = async (key) => {
-    await updateApplicationStatus(databaseData.currentSessionId, data.id, key)
     onClose()
+    await updateApplicationStatus(databaseData.currentSessionId, data.id, key)
+    showToast(`Changed status to "${applicationStatuses[key].label}"`)
   }
   return (
     <Popup isOpen={isOpen}>
