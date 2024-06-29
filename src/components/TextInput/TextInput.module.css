@@ -18,7 +18,7 @@
   border-radius: 5.5px;
   border: 1px solid #cbd5e1;
 
-  margin: 2px 0;
+  margin: 3px 0;
   transition: border 0.1s ease, box-shadow 0.1s ease, margin 0.1s ease;
 }
 
@@ -36,6 +36,6 @@
 
 .main input:focus {
   border: 2px solid #2563eb;
-  box-shadow: 0 0 0 2px #dbeafe;
-  margin: 2px;
+  box-shadow: 0 2px 2px -1px #94a3b877, 0 0 0 3px #dbeafe;
+  margin: 3px;
 }

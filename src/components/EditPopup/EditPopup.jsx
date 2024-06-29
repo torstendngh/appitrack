@@ -2,6 +2,7 @@ import styles from "./EditPopup.module.css";
 import Popup from "../Popup/Popup";
 import TextInput from "../TextInput/TextInput"
 import Icon from "../Icon/Icon";
+import Button from "../Button/Button";
 
 const EditPopup = ({ onClose, isOpen, label }) => {
   return (
@@ -15,8 +16,13 @@ const EditPopup = ({ onClose, isOpen, label }) => {
             <Icon icon={"close"} />
           </button>
         </div>
-        <TextInput label={label}/>
-        <button>Save</button>
+        <div className={styles.content}>
+          <TextInput label={label}/>
+          <div className={styles.buttonContainer}>
+            <Button>Cancel</Button>
+            <Button isPrimary>Save</Button>
+          </div>
+        </div>
       </div>
     </Popup>
   );

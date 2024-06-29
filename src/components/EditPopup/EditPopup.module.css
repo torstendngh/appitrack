@@ -54,3 +54,17 @@
     justify-content: center;
     gap: 4px;
   }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    overflow: auto;
+    flex: 1;
+  }
+
+  .buttonContainer {
+    display: flex;
+    gap: 11px;
+    justify-content: flex-end;
+  }

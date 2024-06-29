@@ -5,7 +5,7 @@ const DesktopTabBar = ({}) => {
   return (
     <nav className={styles.main}>
       <h1>youapply</h1>
-      <Tab to={"/applications"} icon={"home"} iconActive={"home_filled"} label={"Applications"} />
+      <Tab to={"/applications"} icon={"applications"} iconActive={"applications_filled"} label={"Applications"} />
       <Tab to={"/calendar"} icon={"calendar"} iconActive={"calendar_filled"} label={"Calendar"} />
       {/* <Tab to={"/files"} icon={"files"} label={"Files"} /> */}
       <Tab to={"/sessions"} icon={"sessions"} iconActive={"sessions_filled"} label={"Sessions"} />

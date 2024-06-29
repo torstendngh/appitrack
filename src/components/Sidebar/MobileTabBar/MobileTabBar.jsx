@@ -6,8 +6,8 @@ const MobileTabBar = ({}) => {
     <nav className={styles.main}>
       <Tab
         to={"/applications"}
-        icon={"home"}
-        iconActive={"home_filled"}
+        icon={"applications"}
+        iconActive={"applications_filled"}
         label={"Applications"}
       />
       <Tab
