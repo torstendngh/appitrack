@@ -62,23 +62,3 @@
   overflow: auto;
   flex: 1;
 }
-
-.createButton {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 44px;
-  padding: 0 22px;
-  gap: 11px;
-  font-weight: 600;
-  border-radius: 5.5px;
-  background-color: #2563eb;
-  color: white;
-  margin-top: auto;
-  flex-shrink: 0;
-}
-
-.createButton:hover {
-  background-color: #3b82f6;
-}

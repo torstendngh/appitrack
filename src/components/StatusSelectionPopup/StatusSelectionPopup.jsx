@@ -1,12 +1,12 @@
-import Popup from "../../Popup/Popup";
-import styles from "./SelectionPopup.module.css";
-import applicationStatuses from "../../../constants/applicationStatuses";
-import Icon from "../../Icon/Icon";
+import Popup from "../Popup/Popup";
+import styles from "./StatusSelectionPopup.module.css";
+import applicationStatuses from "../../constants/applicationStatuses";
+import Icon from "../Icon/Icon";
 import { useContext } from "react";
-import DataContext from "../../../contexts/DataContext";
-import showToast from "../../Toast/Toast";
+import DataContext from "../../contexts/DataContext";
+import showToast from "../Toast/Toast";
 
-const SelectionPopup = ({onClose, isOpen, data}) => {
+const StatusSelectionPopup = ({onClose, isOpen, data}) => {
   const {updateApplicationStatus, data: databaseData} = useContext(DataContext)
   const handleStatusClick = async (key) => {
     onClose()
@@ -14,7 +14,7 @@ const SelectionPopup = ({onClose, isOpen, data}) => {
     showToast(`Changed status to "${applicationStatuses[key].label}"`)
   }
   return (
-    <Popup isOpen={isOpen}>
+    <Popup isOpen={isOpen} onClose={onClose}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
@@ -43,4 +43,4 @@ const SelectionPopup = ({onClose, isOpen, data}) => {
   );
 };
 
-export default SelectionPopup;
+export default StatusSelectionPopup;

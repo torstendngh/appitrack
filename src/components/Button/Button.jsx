@@ -10,13 +10,17 @@ const Button = ({
   type = "button",
   className,
 }) => {
+  const handleClick = (e) => {
+    e.stopPropagation()
+    onClick()
+  };
   return (
     <button
       className={`${styles.main} ${isPrimary ? styles.primary : ""} ${
         shrinks ? styles.shrinks : ""
       } ${className}`}
       title={title}
-      onClick={onClick}
+      onClick={handleClick}
       style={style}
       type={type}
     >

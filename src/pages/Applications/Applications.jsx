@@ -3,9 +3,9 @@ import Application from "./Application/Application";
 import styles from "./Applications.module.css";
 import Searchbar from "./Searchbar/Searchbar";
 import { useContext, useState } from "react";
-import AddApplicationPopup from "./AddApplicationPopup/AddApplicationPopup.jsx";
 import DataContext from "../../contexts/DataContext.jsx";
 import Button from "../../components/Button/Button.jsx";
+import AddApplicationPopup from "../../components/AddApplicationPopup/AddApplicationPopup.jsx";
 
 const Applications = ({}) => {
   const { data } = useContext(DataContext);

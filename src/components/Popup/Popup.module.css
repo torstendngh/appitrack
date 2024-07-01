@@ -4,7 +4,7 @@
   display: flex;
   z-index: 1000;
   backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e2e8f076;
   padding: 16px;
 }
 
@@ -21,6 +21,14 @@
   z-index: 1001;
 }
 
+.window.fullscreen {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 16px;
+  width: unset;
+  flex: 1;
+}
+
 @media screen and (max-width: 700px) {
   .main {
     padding: 0;
@@ -33,5 +41,8 @@
     border: 0;
     border-radius: 0;
     box-shadow: 0;
+  }
+  .window.fullscreen {
+    margin: 0;
   }
 }

@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import styles from "./AddApplicationPopup.module.css";
-import Popup from "../../../components/Popup/Popup";
-import Icon from "../../../components/Icon/Icon";
-import TextInput from "../../../components/TextInput/TextInput";
-import DataContext from "../../../contexts/DataContext";
+import Popup from "../Popup/Popup"
+import Icon from "../Icon/Icon";
+import TextInput from "../TextInput/TextInput";
+import DataContext from "../../contexts/DataContext";
+import Button from "../Button/Button";
 
 const AddApplicationPopup = ({ onClose, isOpen }) => {
   const { addApplication, data } = useContext(DataContext);
@@ -29,7 +30,7 @@ const AddApplicationPopup = ({ onClose, isOpen }) => {
   };
 
   return (
-    <Popup isOpen={isOpen}>
+    <Popup isOpen={isOpen}  onClose={onClose}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
@@ -67,13 +68,14 @@ const AddApplicationPopup = ({ onClose, isOpen }) => {
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           />
-          <button
-            className={styles.createButton}
+          <Button
             onClick={handleAddApplication}
+            isPrimary
+            
           >
             <Icon icon={"tick_filled"} />
             Create
-          </button>
+          </Button>
         </div>
       </div>
     </Popup>

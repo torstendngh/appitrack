@@ -54,9 +54,12 @@ const Sessions = ({}) => {
                     Applications: {session.applications.length}
                   </span>
                 </div>
-                {data?.currentSessionId == session.id && (
-                  <span className={styles.active}>Currently Active</span>
-                )}
+                <div className={styles.buttonContainer}>
+                  {data?.currentSessionId == session.id && (
+                    <span className={styles.active}>Currently Active</span>
+                  )}
+                  <Button><Icon icon={"edit"}/></Button>
+                </div>
               </button>
             ))}
         </div>

@@ -2,9 +2,8 @@ import Icon from "../Icon/Icon";
 import styles from "./StatusButton.module.css";
 import applicationStatus from "../../constants/applicationStatuses";
 import { useState } from "react";
-import Popup from "../Popup/Popup";
-import SelectionPopup from "./SelectionPopup/SelectionPopup";
 import Button from "../Button/Button";
+import StatusSelectionPopup from "../StatusSelectionPopup/StatusSelectionPopup";
 
 const StatusButton = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
@@ -22,7 +21,7 @@ const StatusButton = ({ data }) => {
         {applicationStatus[data.status].label}
         <Icon icon={applicationStatus[data.status].icon} />
       </Button>
-      <SelectionPopup isOpen={isActive} data={data} onClose={() => setIsActive(false)}/>
+      <StatusSelectionPopup isOpen={isActive} data={data} onClose={() => setIsActive(false)}/>
     </>
   );
 };

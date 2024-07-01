@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 
 const EditPopup = ({ onClose, isOpen, label }) => {
   return (
-    <Popup isOpen={isOpen}>
+    <Popup isOpen={isOpen} onClose={onClose}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
@@ -19,7 +19,7 @@ const EditPopup = ({ onClose, isOpen, label }) => {
         <div className={styles.content}>
           <TextInput label={label}/>
           <div className={styles.buttonContainer}>
-            <Button>Cancel</Button>
+            <Button onClick={onClose}>Cancel</Button>
             <Button isPrimary>Save</Button>
           </div>
         </div>

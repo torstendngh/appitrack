@@ -4,6 +4,7 @@ import styles from "./ApplicationPopup.module.css";
 import StatusButton from "../StatusButton/StatusButton";
 import { useState } from "react";
 import EditPopup from "../EditPopup/EditPopup";
+import Button from "../Button/Button";
 
 const TextContainer = ({ label, content }) => {
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -16,28 +17,39 @@ const TextContainer = ({ label, content }) => {
         <span className={styles.label}>{label}</span>
         <span className={styles.content}>{content}</span>
       </button>
-      <EditPopup isOpen={isEditPopupOpen} onClose={() => setIsEditPopupOpen(false)} label={label}/>
+      <EditPopup
+        isOpen={isEditPopupOpen}
+        onClose={() => setIsEditPopupOpen(false)}
+        label={label}
+      />
     </>
   );
 };
 
 const ApplicationPopup = ({ onClose, data, isOpen }) => {
   return (
-    <Popup isOpen={isOpen}>
+    <Popup isOpen={isOpen} fullscreen onClose={onClose}>
       <div className={styles.main}>
         <div className={styles.titlebar}>
           <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Application</h1>
+            <h1 className={styles.title}>{data.company}</h1>
+            <span className={styles.job}>{data.jobTitle}</span>
           </div>
           <button className={styles.closeButton} onClick={onClose}>
             <Icon icon={"close"} />
           </button>
         </div>
         <div className={styles.content}>
-          <TextContainer label="Company" content={data.company} />
-          <TextContainer label="Job" content={data.jobTitle} />
-          <TextContainer label="Last Updated" content={data.lastUpdated} />
-          <StatusButton data={data} />
+          <div>
+            <StatusButton data={data} />
+          </div>
+          <div>
+            <Button>Add Interview</Button>
+          </div>
+          <div>
+            Notes
+            <textarea name="" id=""></textarea>
+          </div>
         </div>
       </div>
     </Popup>
