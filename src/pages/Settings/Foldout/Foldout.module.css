@@ -23,9 +23,12 @@
   align-items: center;
   gap: 8px;
   padding: 16px;
-
 }
 
-.button:hover {
+.main:hover {
+  border: 1px solid #cbd5e1;
+}
+
+.main:hover .button {
   background-color: #f1f5f9;
 }

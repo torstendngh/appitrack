@@ -10,6 +10,9 @@ const DesktopTabBar = ({}) => {
       {/* <Tab to={"/files"} icon={"files"} label={"Files"} /> */}
       <Tab to={"/sessions"} icon={"sessions"} iconActive={"sessions_filled"} label={"Sessions"} />
       <Tab to={"/settings"} icon={"settings"} iconActive={"settings_filled"} label={"Settings"} />
+      <div className={styles.bottomSection}>
+      <Tab to={"/help"} icon={"help"} iconActive={"help_filled"} label={"Help"} />
+      </div>
     </nav>
   );
 };

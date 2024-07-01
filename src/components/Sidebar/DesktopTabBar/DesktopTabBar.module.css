@@ -5,6 +5,7 @@
   border-right: 1px solid #e2e8f0;
   padding: 16px;
   gap: 4px;
+  overflow: auto;
 }
 
 @media (max-width: 700px) {
@@ -20,4 +21,12 @@
   color: #1e293b;
   display: inline;
   font-feature-settings: "cv11", "cv06", "cv10", "cv12";
+}
+
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  border-top: 1px #e2e8f0 solid;
+  padding-top: 16px;
 }

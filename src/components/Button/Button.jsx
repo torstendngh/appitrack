@@ -12,7 +12,7 @@ const Button = ({
 }) => {
   const handleClick = (e) => {
     e.stopPropagation()
-    onClick()
+    onClick(e)
   };
   return (
     <button

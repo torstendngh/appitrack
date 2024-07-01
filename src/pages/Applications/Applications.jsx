@@ -7,6 +7,13 @@ import DataContext from "../../contexts/DataContext.jsx";
 import Button from "../../components/Button/Button.jsx";
 import AddApplicationPopup from "../../components/AddApplicationPopup/AddApplicationPopup.jsx";
 
+const HeaderContainer = ({ title }) => (
+  <div className={styles.headerContainer}>
+    <h1 className={styles.undertitle}>{title}</h1>
+    <div className={styles.line}></div>
+  </div>
+);
+
 const Applications = ({}) => {
   const { data } = useContext(DataContext);
   const [isAddApplicationPopupVisible, setIsAddApplicationPopupVisible] =
@@ -21,10 +28,28 @@ const Applications = ({}) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredApplications = currentSession?.applications?.filter(
-    (application) =>
-      application.jobTitle.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filterAndSortApplications = (applications) => {
+    if (!applications) return [];
+
+    if (searchQuery !== "") {
+      return applications.filter(
+        (application) =>
+          application.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          application.company.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    const activeApplications = applications.filter(
+      (application) => application.status !== "withdrawn" && application.status !== "rejected"
+    );
+    const inactiveApplications = applications.filter(
+      (application) => application.status === "withdrawn" || application.status === "rejected"
+    );
+
+    return [...activeApplications, ...inactiveApplications];
+  };
+
+  const filteredApplications = filterAndSortApplications(currentSession?.applications);
 
   return (
     <>
@@ -46,9 +71,19 @@ const Applications = ({}) => {
             <h1 className={styles.title}>
               {searchQuery !== "" ? `Search: ${searchQuery}` : "Applications"}
             </h1>
-            {filteredApplications?.map((application) => (
-              <Application key={application.id} data={application} />
-            ))}
+            <HeaderContainer title={"Active"}/>
+            {filteredApplications
+              ?.filter(application => application.status !== "withdrawn" && application.status !== "rejected")
+              .map((application) => (
+                <Application key={application.id} data={application} />
+              ))}
+            <div className={styles.devider}></div>
+            <HeaderContainer title={"Inactive"}/>
+            {filteredApplications
+              ?.filter(application => application.status === "withdrawn" || application.status === "rejected")
+              .map((application) => (
+                <Application key={application.id} data={application} />
+              ))}
           </div>
         </div>
       </div>
