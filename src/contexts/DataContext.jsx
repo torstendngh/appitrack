@@ -33,13 +33,33 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const createNewSession = () => ({
-    id: crypto.randomUUID(),
-    name: "",
-    startDate: new Date().toISOString(),
-    endDate: null,
-    applications: [],
-  });
+  const getNextSessionNumber = () => {
+    const existingNumbers = data.sessions
+      .map((session) => {
+        const match = session.name.match(/Session #(\d+)/);
+        return match ? parseInt(match[1], 10) : null;
+      })
+      .filter((num) => num !== null);
+
+    let nextNumber = 1;
+    while (existingNumbers.includes(nextNumber)) {
+      nextNumber++;
+    }
+
+    return nextNumber;
+  };
+
+  const createNewSession = () => {
+    const sessionNumber = getNextSessionNumber();
+    const now = new Date().toISOString();
+    return {
+      id: crypto.randomUUID(),
+      name: `Session #${sessionNumber}`,
+      created: now,
+      lastUpdated: now,
+      applications: [],
+    };
+  };
 
   const createApplication = () => ({
     id: crypto.randomUUID(),
@@ -88,7 +108,13 @@ export const DataProvider = ({ children }) => {
     const newData = {
       ...data,
       sessions: data.sessions.map((session) =>
-        session.id === sessionId ? { ...session, ...updatedFields } : session
+        session.id === sessionId
+          ? {
+              ...session,
+              ...updatedFields,
+              lastUpdated: new Date().toISOString(),
+            }
+          : session
       ),
     };
     setData(newData);
@@ -96,10 +122,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const addApplication = async (sessionId, applicationFields = {}) => {
-    const newApplication = { 
+    const newApplication = {
       id: crypto.randomUUID(), // Assuming you have a function to generate unique IDs
-      ...createApplication(), 
-      ...applicationFields 
+      ...createApplication(),
+      ...applicationFields,
     };
     const newData = {
       ...data,
@@ -108,6 +134,7 @@ export const DataProvider = ({ children }) => {
           ? {
               ...session,
               applications: [...session.applications, newApplication],
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),
@@ -126,6 +153,7 @@ export const DataProvider = ({ children }) => {
               applications: session.applications.filter(
                 (app) => app.id !== applicationId
               ),
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),
@@ -142,8 +170,15 @@ export const DataProvider = ({ children }) => {
           ? {
               ...session,
               applications: session.applications.map((app) =>
-                app.id === applicationId ? { ...app, ...updatedFields } : app
+                app.id === applicationId
+                  ? {
+                      ...app,
+                      ...updatedFields,
+                      lastUpdated: new Date().toISOString(),
+                    }
+                  : app
               ),
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),
@@ -164,6 +199,7 @@ export const DataProvider = ({ children }) => {
                   ? { ...app, status, lastUpdated: new Date().toISOString() }
                   : app
               ),
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),
@@ -198,9 +234,11 @@ export const DataProvider = ({ children }) => {
                   ? {
                       ...app,
                       interviews: [...app.interviews, newInterview],
+                      lastUpdated: new Date().toISOString(),
                     }
                   : app
               ),
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),
@@ -223,9 +261,11 @@ export const DataProvider = ({ children }) => {
                       interviews: app.interviews.filter(
                         (interview) => interview.id !== interviewId
                       ),
+                      lastUpdated: new Date().toISOString(),
                     }
                   : app
               ),
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),
@@ -252,12 +292,18 @@ export const DataProvider = ({ children }) => {
                       ...app,
                       interviews: app.interviews.map((interview) =>
                         interview.id === interviewId
-                          ? { ...interview, ...updatedFields }
+                          ? {
+                              ...interview,
+                              ...updatedFields,
+                              lastUpdated: new Date().toISOString(),
+                            }
                           : interview
                       ),
+                      lastUpdated: new Date().toISOString(),
                     }
                   : app
               ),
+              lastUpdated: new Date().toISOString(),
             }
           : session
       ),

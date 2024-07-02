@@ -1,0 +1,105 @@
+.main {
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 11px;
+  border-radius: 11px;
+  box-shadow: 0 2px 3px #f1f5f9, 0 -1px #e2e8f0 inset;
+  background-color: white;
+}
+
+.sessionName {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.statisticsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.statisticContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.statisticTitle {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.statisticValue {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.acceptedJobsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.acceptedJobContainer {
+  display: flex;
+  align-items: center;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 11px;
+  border-radius: 5.5px;
+  gap: 11px;
+}
+
+.acceptedJobEmblem {
+  height: 44px;
+  width: 44px;
+  border-radius: 100%;
+  background-color: #34d399;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.acceptedJobContainer > .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.acceptedJobContainer > .content > .job {
+    font-size: 16px;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+.acceptedJobContainer > .content > .company {
+    font-size: 18px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 11px;
+  margin-top: 11px;
+}
+
+.activeTag {
+  background-color: #d1fae5;
+  color: #059669;
+  padding: 4px 8px;
+  border-radius: 5.5px;
+  font-size: 16px;
+  font-weight: 550;
+}

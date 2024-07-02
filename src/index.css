@@ -90,6 +90,6 @@ svg {
   overflow: visible !important;
 }
 
-:not(input[text], input[search]):focus-visible {
+/* :not(input[text], input[search]):focus-visible {
   box-shadow: 0 0 0 2px black, 0 0 0 2px white inset;
-}
+} */
