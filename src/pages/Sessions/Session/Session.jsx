@@ -76,8 +76,12 @@ const Session = ({ session }) => {
         </div>
       )}
       <div className={styles.buttonContainer}>
+      <Button>Edit Name</Button>
         <Button onClick={handleRemoveSession}>Delete</Button>
-        <Button onClick={handleChangeSession}>Set Active</Button>
+        {
+            session.id !== data?.currentSessionId &&
+        <Button onClick={handleChangeSession} isPrimary>Set Active</Button>
+        }
       </div>
     </div>
   );
