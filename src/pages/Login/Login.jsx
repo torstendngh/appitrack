@@ -11,7 +11,7 @@ const Login = ({}) => {
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/applications")
+      navigate("/dashboard/applications")
     }
   }, [currentUser])
 

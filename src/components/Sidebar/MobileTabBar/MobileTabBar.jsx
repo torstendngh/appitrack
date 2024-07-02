@@ -5,26 +5,26 @@ const MobileTabBar = ({}) => {
   return (
     <nav className={styles.main}>
       <Tab
-        to={"/applications"}
+        to={"/dashboard/applications"}
         icon={"applications"}
         iconActive={"applications_filled"}
         label={"Applications"}
       />
       <Tab
-        to={"/calendar"}
+        to={"/dashboard/calendar"}
         icon={"calendar"}
         iconActive={"calendar_filled"}
         label={"Calendar"}
       />
       {/* <Tab to={"/files"} icon={"files"} label={"Files"} /> */}
       <Tab
-        to={"/sessions"}
+        to={"/dashboard/sessions"}
         icon={"sessions"}
         iconActive={"sessions_filled"}
         label={"Sessions"}
       />
       <Tab
-        to={"/settings"}
+        to={"/dashboard/settings"}
         icon={"settings"}
         iconActive={"settings_filled"}
         label={"Settings"}
