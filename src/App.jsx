@@ -13,7 +13,7 @@ const App = ({}) => {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
-        <Route index element={<Navigate to="/applications" replace={true} />} />
+        <Route index element={<Navigate to="applications" replace={true} />} />
         <Route path="applications" element={<Applications />} />
         <Route path="calendar" element={<Calendar />} />
         <Route path="sessions" element={<Sessions/>} />
