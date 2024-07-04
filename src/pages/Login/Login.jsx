@@ -3,26 +3,36 @@ import Icon from "../../components/Icon/Icon";
 import styles from "./Login.module.css";
 import AuthContext from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../components/Logo/Logo";
+import Button from "../../components/Button/Button";
 
 const Login = ({}) => {
-
-  const {loginWithGoogle, currentUser} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { loginWithGoogle, currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/dashboard/applications")
+      navigate("/dashboard/applications");
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   return (
     <div className={styles.main}>
       <div className={styles.window}>
-        <h1 className={styles.logo}>appitrack</h1>
-        <span className={styles.description}>Login to synchronise application data</span>
-        <button className={styles.googleButton} onClick={loginWithGoogle}>
-          <Icon icon={"googleLogo"}/>
-          Login with Google</button>
+        <h1 className={styles.logo} onClick={() => navigate("/")}>
+          <Logo size={32} />
+          <span>applyups</span>
+        </h1>
+        <h2 className={styles.title}>Login</h2>
+        <span className={styles.description}>
+          Login to synchronise
+          <br />
+          application data
+        </span>
+        <Button onClick={loginWithGoogle}>
+          <Icon icon={"googleLogo"} />
+          Login with Google
+        </Button>
       </div>
     </div>
   );

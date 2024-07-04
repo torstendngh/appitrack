@@ -9,8 +9,8 @@
   width: 100%;
   max-width: 1000px;
   display: flex;
-flex-direction: column;
-perspective: 800px;
+  flex-direction: column;
+  perspective: 800px;
 }
 
 .logo {
@@ -21,9 +21,9 @@ perspective: 800px;
   font-feature-settings: "cv11", "cv06", "cv10", "cv12";
   margin-top: 100px;
   display: flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .bigTitle {
@@ -38,27 +38,26 @@ gap: 8px;
 }
 
 .bigImage {
-    width: 80%;
-    aspect-ratio: 16 / 9;
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
-    border-radius: 11px;
-    margin: 0 auto;
-    box-shadow: 0 16px 32px #E2E8F0;
-    transform: rotateX(10deg);
-    margin-bottom: 100px;
+  width: 90%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  border-radius: 11px;
+  margin: 0 auto;
+  box-shadow: 0 16px 32px #e2e8f0;
+  transform: rotateX(10deg);
+  margin-bottom: 100px;
 }
 
 .bigImage > img {
-    width: 100%;
-    height: 100%;
-
+  width: 100%;
+  height: 100%;
 }
 
 .buttonContainer {
-    display: flex;
-align-items: center;
-justify-content: center;
-margin-bottom: 44px;
-gap: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 44px;
+  gap: 11px;
 }

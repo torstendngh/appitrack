@@ -21,6 +21,7 @@
   color: #1e293b;
   display: inline;
   font-feature-settings: "cv11", "cv06", "cv10", "cv12";
+  cursor: pointer;
 }
 
 .bottomSection {

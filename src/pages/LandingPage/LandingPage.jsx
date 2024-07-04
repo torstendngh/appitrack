@@ -15,13 +15,13 @@ const LandingPage = ({}) => {
             <span className={styles.logo}><Logo size={32}/><span>applyups</span></span>
             <h1 className={styles.bigTitle}>Organize your<br />Applications</h1>
             <div className={styles.buttonContainer}>
-                <Button>Pricing</Button>
                 {
                     !!currentUser ?
                     <Button isPrimary onClick={() => navigate("/dashboard")}>Dashboard</Button>
                     :
-                    <Button isPrimary onClick={() => navigate("/login")}>Login</Button>
+                    <Button isPrimary onClick={() => navigate("/login")}>Get Started</Button>
                 }
+                <Button>Pricing</Button>
             </div>
             <div className={styles.bigImage}>
                 <img src={screenshotApplicationsScreen} alt="" />
