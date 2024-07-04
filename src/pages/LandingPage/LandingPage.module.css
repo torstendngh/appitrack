@@ -39,7 +39,6 @@
 
 .bigImage {
   width: 90%;
-  aspect-ratio: 16 / 9;
   border: 1px solid #e2e8f0;
   overflow: hidden;
   border-radius: 11px;
@@ -47,6 +46,12 @@
   box-shadow: 0 16px 32px #e2e8f0;
   transform: rotateX(10deg);
   margin-bottom: 100px;
+  transition: all 0.3s ease;
+}
+
+.bigImage:hover {
+  box-shadow: 0 26px 50px #e2e8f0;
+  transform: rotateX(10deg) translateY(-10px);
 }
 
 .bigImage > img {

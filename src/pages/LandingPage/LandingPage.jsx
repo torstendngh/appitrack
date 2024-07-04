@@ -5,12 +5,14 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
+import Navbar from "./Navbar/Navbar";
 
 const LandingPage = ({}) => {
     const {currentUser} = useContext(AuthContext)
     const navigate = useNavigate()
   return (
     <div className={styles.main}>
+        <Navbar/>
         <div className={styles.centerLayout}>
             <span className={styles.logo}><Logo size={32}/><span>applyups</span></span>
             <h1 className={styles.bigTitle}>Organize your<br />Applications</h1>
