@@ -19,20 +19,25 @@ const Login = ({}) => {
   return (
     <div className={styles.main}>
       <div className={styles.window}>
-        <h1 className={styles.logo} onClick={() => navigate("/")}>
-          <Logo size={32} />
-          <span>applyups</span>
-        </h1>
-        <h2 className={styles.title}>Login</h2>
-        <span className={styles.description}>
-          Login to synchronise
-          <br />
-          application data
-        </span>
-        <Button onClick={loginWithGoogle}>
-          <Icon icon={"googleLogo"} />
-          Login with Google
-        </Button>
+        <div className={styles.imageContainer}>
+
+        </div>
+        <div className={styles.contentContainer}>
+          <h1 className={styles.logo} onClick={() => navigate("/")}>
+            <Logo size={32} />
+            <span>applyups</span>
+          </h1>
+          <h2 className={styles.title}>Login</h2>
+          <span className={styles.description}>
+            Login to synchronise
+            <br />
+            application data
+          </span>
+          <Button onClick={loginWithGoogle}>
+            <Icon icon={"googleLogo"} />
+            Login with Google
+          </Button>
+        </div>
       </div>
     </div>
   );
