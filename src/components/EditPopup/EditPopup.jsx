@@ -21,29 +21,19 @@ const EditPopup = ({ onClose, isOpen, label, value, onSave }) => {
   };
 
   return (
-    <Popup isOpen={isOpen} onClose={onClose}>
+    <Popup isOpen={isOpen} onClose={onClose} title={"Edit"}>
       <div className={styles.main}>
-        <div className={styles.titlebar}>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Edit</h1>
-          </div>
-          <button className={styles.closeButton} onClick={onClose}>
-            <Icon icon={"close"} />
-          </button>
-        </div>
-        <div className={styles.content}>
-          <TextInput
-            label={label}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            ref={inputRef}
-          />
-          <div className={styles.buttonContainer}>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button isPrimary onClick={handleOnSave}>
-              Save
-            </Button>
-          </div>
+        <TextInput
+          label={label}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          ref={inputRef}
+        />
+        <div className={styles.buttonContainer}>
+          <Button onClick={onClose}>Cancel</Button>
+          <Button isPrimary onClick={handleOnSave}>
+            Save
+          </Button>
         </div>
       </div>
     </Popup>

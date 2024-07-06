@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Popup.module.css";
+import Icon from "../Icon/Icon";
 
-const Popup = ({ children, isOpen, fullscreen = false, onClose }) => {
+const Popup = ({ children, isOpen, fullscreen = false, onClose, title }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -29,6 +30,14 @@ const Popup = ({ children, isOpen, fullscreen = false, onClose }) => {
         className={`${styles.window} ${fullscreen ? styles.fullscreen : ""}`}
         onClick={stopPropagation}
       >
+        <div className={styles.titlebar}>
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>{title}</h1>
+          </div>
+          <button className={styles.closeButton} onClick={onClose}>
+            <Icon icon={"close"} />
+          </button>
+        </div>
         {children}
       </div>
     </div>,

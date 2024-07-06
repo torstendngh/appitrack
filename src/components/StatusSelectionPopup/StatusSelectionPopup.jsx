@@ -14,18 +14,9 @@ const StatusSelectionPopup = ({onClose, isOpen, data}) => {
     showToast(`Changed status to "${applicationStatuses[key].label}"`)
   }
   return (
-    <Popup isOpen={isOpen} onClose={onClose}>
+    <Popup isOpen={isOpen} onClose={onClose} title={"Select Status"} >
       <div className={styles.main}>
-        <div className={styles.titlebar}>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Select Status</h1>
-            <span className={styles.description}>Select the new status for the job "{data.jobTitle}" at "{data.company}". It will be added to the history automatically.</span>
-          </div>
-          <button className={styles.closeButton} onClick={onClose}>
-            <Icon icon={"close"}/>
-          </button>
-        </div>
-        <div className={styles.list}>
+        <span className={styles.description}>Select the new status for the job "{data.jobTitle}" at "{data.company}". It will be added to the history automatically.</span>
           {Object.keys(applicationStatuses).map((key) => (
             <button key={key} className={styles.status} style={{color: applicationStatuses[key].color}} onClick={() => handleStatusClick(key)}>
               <Icon icon={applicationStatuses[key].icon} />
@@ -38,7 +29,6 @@ const StatusSelectionPopup = ({onClose, isOpen, data}) => {
             </button>
           ))}
         </div>
-      </div>
     </Popup>
   );
 };

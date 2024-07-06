@@ -28,28 +28,17 @@ const TextContainer = ({ label, content }) => {
 
 const ApplicationPopup = ({ onClose, data, isOpen }) => {
   return (
-    <Popup isOpen={isOpen} fullscreen onClose={onClose}>
+    <Popup isOpen={isOpen} fullscreen onClose={onClose} title={"Application"}>
       <div className={styles.main}>
-        <div className={styles.titlebar}>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>{data.company}</h1>
-            <span className={styles.job}>{data.jobTitle}</span>
-          </div>
-          <button className={styles.closeButton} onClick={onClose}>
-            <Icon icon={"close"} />
-          </button>
+        <div>
+          <StatusButton data={data} />
         </div>
-        <div className={styles.content}>
-          <div>
-            <StatusButton data={data} />
-          </div>
-          <div>
-            <Button>Add Interview</Button>
-          </div>
-          <div>
-            Notes
-            <textarea name="" id=""></textarea>
-          </div>
+        <div>
+          <Button>Add Interview</Button>
+        </div>
+        <div>
+          Notes
+          <textarea name="" id=""></textarea>
         </div>
       </div>
     </Popup>

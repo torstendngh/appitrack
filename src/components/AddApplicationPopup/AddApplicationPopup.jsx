@@ -30,21 +30,12 @@ const AddApplicationPopup = ({ onClose, isOpen }) => {
   };
 
   return (
-    <Popup isOpen={isOpen}  onClose={onClose}>
+    <Popup isOpen={isOpen}  onClose={onClose} title={"Create New Application"}>
       <div className={styles.main}>
-        <div className={styles.titlebar}>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Create New Application</h1>
-            <span className={styles.description}>
+        <span className={styles.description}>
               Create a new application to save the current status, notes, and
               the history.
             </span>
-          </div>
-          <button className={styles.closeButton} onClick={onClose}>
-            <Icon icon={"close"} />
-          </button>
-        </div>
-        <div className={styles.content}>
           <TextInput
             label={"Company"}
             value={company}
@@ -77,7 +68,6 @@ const AddApplicationPopup = ({ onClose, isOpen }) => {
             Create
           </Button>
         </div>
-      </div>
     </Popup>
   );
 };
