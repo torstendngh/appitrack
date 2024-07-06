@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Foldout.module.css";
-import Icon from "../../../components/Icon/Icon";
+import Icon from "../Icon/Icon"
 
 const Foldout = ({ label, isOpenByDefault = false, children }) => {
   const [isOpen, setIsOpen] = useState(isOpenByDefault);

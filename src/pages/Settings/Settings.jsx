@@ -3,7 +3,7 @@ import Icon from "../../components/Icon/Icon";
 import styles from "./Settings.module.css";
 import DataContext from "../../contexts/DataContext";
 import AuthContext from "../../contexts/AuthContext";
-import Foldout from "./Foldout/Foldout";
+import Foldout from "../../components/Foldout/Foldout";
 import Avatar from "../../components/Avatar/Avatar";
 import Button from "../../components/Button/Button";
 

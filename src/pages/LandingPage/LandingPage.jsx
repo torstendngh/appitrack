@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import Navbar from "./Navbar/Navbar";
+import Pricing from "./Pricing/Pricing";
+import FAQ from "./FAQ/FAQ";
 
 const LandingPage = ({}) => {
     const {currentUser} = useContext(AuthContext)
@@ -28,6 +30,12 @@ const LandingPage = ({}) => {
             <div className={styles.bigImage}>
                 <img src={screenshotApplicationsScreen} alt="" />
             </div>
+        </div>
+        <div className={styles.content}>
+
+        <Pricing/>
+        <FAQ/>
+        <div></div>
         </div>
     </div>
   );

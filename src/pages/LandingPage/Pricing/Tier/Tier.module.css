@@ -1,0 +1,81 @@
+.main {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  border-radius: 11px;
+  box-shadow: 0 2px 3px #f1f5f9, 0 -1px #e2e8f0 inset;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.description {
+  font-size: 16px;
+  color: #94a3b8;
+  max-width: 300px;
+}
+
+.price {
+  font-size: 64px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.priceUndertitle {
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 22px;
+}
+
+.featuresContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+  padding-top: 22px;
+  gap: 8px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+}
+
+.hasFeature {
+  color: #64748b;
+}
+
+.hasFeature > svg {
+  color: #2563eb;
+}
+
+.badge {
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    color: #2563eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    rotate: 20deg;
+}
+
+.badge > span {
+    color: white;
+    position: absolute;
+    font-weight: 600;
+}

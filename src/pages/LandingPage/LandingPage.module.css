@@ -46,12 +46,18 @@
   box-shadow: 0 16px 32px #e2e8f0;
   transform: rotateX(10deg);
   margin-bottom: 100px;
-  transition: all 0.3s ease;
+  animation: landingPageBigImageHover 2s ease-in-out infinite;
 }
 
-.bigImage:hover {
-  box-shadow: 0 26px 50px #e2e8f0;
+@keyframes landingPageBigImageHover {
+  0%, 100% {
+    box-shadow: 0 16px 32px #e2e8f0;
+  transform: rotateX(10deg) translateY(0px);
+  }
+  50% {
+    box-shadow: 0 26px 50px #e2e8f0;
   transform: rotateX(10deg) translateY(-10px);
+  }
 }
 
 .bigImage > img {
@@ -65,4 +71,10 @@
   justify-content: center;
   margin-bottom: 44px;
   gap: 11px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
 }
