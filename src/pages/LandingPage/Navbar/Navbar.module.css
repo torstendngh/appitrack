@@ -1,25 +1,82 @@
 .main {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.80);
-    z-index: 100;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.4s ease, box-shadow 0.4s ease;
+}
+
+.main.scrolled {
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 8px 16px #06182b15;
 }
 
 .main a {
-    font-weight: 600;
-    padding: 22px;
-    color: #94a3b8;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    
+  font-weight: 600;
+  padding: 22px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.1s ease;
 }
 
 .main a:hover {
-    color: #475569;
+  color: #475569;
+}
+
+.logoContainer,
+.buttonContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.logoContainer {
+  font-weight: 600;
+  font-size: 24px;
+  color: #475569;
+  font-feature-settings: "cv11", "cv06", "cv10", "cv12";
+  gap: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.logoContainer.hidden {
+  opacity: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 11px;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.buttonContainer.hidden {
+    opacity: 0;
+  }
+
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .linkContainer {
+    display: none;
+  }
 }

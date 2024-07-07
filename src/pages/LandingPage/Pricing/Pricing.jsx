@@ -58,7 +58,7 @@ const proTierFeatures = [
         hasFeature: true
     },
     {
-        feature: "Enhanced support",
+        feature: "Priority support",
         hasFeature: true
     },
     {
@@ -81,6 +81,7 @@ const Pricing = ({}) => {
                 description={"For anyone who needs a simple application tracker tool. Free forever."}
                 price={"0,-"}
                 features={freeTierFeatures}
+                isActive
             />
             <Tier
                 title={"Pro"}

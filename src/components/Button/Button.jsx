@@ -9,6 +9,7 @@ const Button = ({
   style,
   type = "button",
   className,
+  isDisabled = false
 }) => {
   const handleClick = (e) => {
     e.stopPropagation()
@@ -23,6 +24,7 @@ const Button = ({
       onClick={handleClick}
       style={style}
       type={type}
+      disabled={isDisabled}
     >
       {children}
     </button>
