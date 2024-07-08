@@ -5,6 +5,7 @@ import StatusButton from "../StatusButton/StatusButton";
 import { useState } from "react";
 import EditPopup from "../EditPopup/EditPopup";
 import Button from "../Button/Button";
+import AddAppointmentPopup from "../AddAppointmentPopup/AddAppointmentPopup";
 
 const TextContainer = ({ label, content }) => {
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -27,14 +28,16 @@ const TextContainer = ({ label, content }) => {
 };
 
 const ApplicationPopup = ({ onClose, data, isOpen }) => {
+  const [isAddAppointmentPopupOpen, setIsAddAppointmentPopupOpen] = useState(false)
   return (
+    <>
     <Popup isOpen={isOpen} fullscreen onClose={onClose} title={"Application"}>
       <div className={styles.main}>
         <div>
           <StatusButton data={data} />
         </div>
         <div>
-          <Button>Add Interview</Button>
+          <Button onClick={() => setIsAddAppointmentPopupOpen(true)}>Add Appointment</Button>
         </div>
         <div>
           Notes
@@ -42,6 +45,8 @@ const ApplicationPopup = ({ onClose, data, isOpen }) => {
         </div>
       </div>
     </Popup>
+    <AddAppointmentPopup onClose={() => setIsAddAppointmentPopupOpen(false)} isOpen={isAddAppointmentPopupOpen}/>
+    </>
   );
 };
 
