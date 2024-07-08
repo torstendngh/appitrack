@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-bottom: 22px;
 }
 
 .bigTitle {
@@ -34,7 +35,7 @@
   font-size: min(13vw, 100px);
   line-height: 1;
   margin-bottom: 44px;
-  margin-top: 22px;
+  margin-top: 11px;
 }
 
 .bigImage {
@@ -50,13 +51,14 @@
 }
 
 @keyframes landingPageBigImageHover {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 16px 32px #e2e8f0;
-  transform: rotateX(10deg) translateY(0px);
+    transform: rotateX(10deg) translateY(0px);
   }
   50% {
     box-shadow: 0 26px 50px #e2e8f0;
-  transform: rotateX(10deg) translateY(-10px);
+    transform: rotateX(10deg) translateY(-10px);
   }
 }
 
@@ -76,5 +78,60 @@
 .content {
   display: flex;
   flex-direction: column;
+  padding-top: 88px;
   gap: 88px;
+}
+
+.miniFeatures {
+  display: flex;
+  padding: 16px;
+}
+
+@media screen and (max-width: 800px) {
+  .miniFeatures {
+    flex-direction: column;
+    gap: 44px;
+  }
+}
+
+.miniFeature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  gap: 8px;
+
+}
+
+.miniFeature > svg {
+  color: #3b82f6;
+}
+
+.miniFeature > .title {
+  color: #475569;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.miniFeature > .description {
+  color: #94a3b8;
+  font-weight: 400;
+  font-size: 18px;
+  max-width: 200px;
+  text-align: center;
+}
+
+.badge {
+  align-self: center;
+  background-color: #eff6ff;
+  padding: 4px 11px;
+  border-radius: 1000px;
+  box-shadow:0 0 0 1px #dbeafe inset;
+  color: #3b82f6;
+  font-weight: 500;
+  display: flex;
+align-items: center;
+justify-content: center;
+gap: 4px;
 }

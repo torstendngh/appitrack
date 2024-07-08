@@ -8,6 +8,7 @@ import AuthContext from "../../contexts/AuthContext";
 import Navbar from "./Navbar/Navbar";
 import Pricing from "./Pricing/Pricing";
 import FAQ from "./FAQ/FAQ";
+import Icon from "../../components/Icon/Icon";
 
 const LandingPage = ({}) => {
   const { currentUser } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const LandingPage = ({}) => {
             <Logo size={32} />
             <span>applyups</span>
           </span>
+          <span className={styles.badge}><Icon icon={"sparkles_16px_filled"}/> Generous Free Version</span>
           <h1 className={styles.bigTitle}>
             Organize your
             <br />
@@ -40,6 +42,27 @@ const LandingPage = ({}) => {
           </div>
           <div className={styles.bigImage}>
             <img src={screenshotApplicationsScreen} alt="" />
+          </div>
+          <div className={styles.miniFeatures}>
+            <div className={styles.miniFeature}>
+              <Icon icon={"securityCheck_32px"} />
+              <span className={styles.title}>Secure</span>
+              <span className={styles.description}>Google Login</span>
+            </div>
+            <div className={styles.miniFeature}>
+              <Icon icon={"chartRelationship_32px"} />
+              <span className={styles.title}>All In One Solution</span>
+              <span className={styles.description}>
+                Organize Applications and Contacts
+              </span>
+            </div>
+            <div className={styles.miniFeature}>
+              <Icon icon={"cloud_32px"} />
+              <span className={styles.title}>Web-Based</span>
+              <span className={styles.description}>
+                Data stored in the cloud, no app needed
+              </span>
+            </div>
           </div>
         </div>
         <div className={styles.content}>
