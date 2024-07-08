@@ -3,7 +3,7 @@
   inset: 0;
   display: flex;
   z-index: 1000;
-  backdrop-filter: blur(8px) brightness(0.9);
+  backdrop-filter: blur(22px);
   padding: 16px;
 }
 

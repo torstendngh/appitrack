@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Popup.module.css";
 import Icon from "../Icon/Icon";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Popup = ({ children, isOpen, fullscreen = false, onClose, title }) => {
   useEffect(() => {
@@ -20,27 +21,42 @@ const Popup = ({ children, isOpen, fullscreen = false, onClose, title }) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   const stopPropagation = (e) => e.stopPropagation();
 
   return createPortal(
-    <div className={styles.main} onClick={stopPropagation}>
-      <div
-        className={`${styles.window} ${fullscreen ? styles.fullscreen : ""}`}
-        onClick={stopPropagation}
-      >
-        <div className={styles.titlebar}>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>{title}</h1>
-          </div>
-          <button className={styles.closeButton} onClick={onClose}>
-            <Icon icon={"close"} />
-          </button>
-        </div>
-        {children}
-      </div>
-    </div>,
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className={styles.main}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          onClick={onClose}
+        >
+          <motion.div
+            className={`${styles.window} ${
+              fullscreen ? styles.fullscreen : ""
+            }`}
+            initial={{ opacity: 0, y: 44 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 44 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            onClick={stopPropagation}
+          >
+            <div className={styles.titlebar}>
+              <div className={styles.titleContainer}>
+                <h1 className={styles.title}>{title}</h1>
+              </div>
+              <button className={styles.closeButton} onClick={onClose}>
+                <Icon icon={"close"} />
+              </button>
+            </div>
+            {children}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
     document.getElementById("popup-root")
   );
 };

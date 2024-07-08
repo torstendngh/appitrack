@@ -36,7 +36,6 @@ const Navbar = () => {
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="#about">About</a>
-        <a href="/login">{currentUser ? "Dashboard" : "Login"}</a>
       </div>
       <div className={`${styles.buttonContainer} ${!scrolled ? styles.hidden : ""}`}>
         <Button>{currentUser ? "Logout" : "Login"}</Button>
