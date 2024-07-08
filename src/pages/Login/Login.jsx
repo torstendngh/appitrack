@@ -19,9 +19,7 @@ const Login = ({}) => {
   return (
     <div className={styles.main}>
       <div className={styles.window}>
-        <div className={styles.imageContainer}>
-
-        </div>
+        <div className={styles.imageContainer}></div>
         <div className={styles.contentContainer}>
           <h1 className={styles.logo} onClick={() => navigate("/")}>
             <Logo size={32} />

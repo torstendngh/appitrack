@@ -38,9 +38,9 @@ const Popup = ({ children, isOpen, fullscreen = false, onClose, title }) => {
             className={`${styles.window} ${
               fullscreen ? styles.fullscreen : ""
             }`}
-            initial={{ opacity: 0, y: 44 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 44 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
             onClick={stopPropagation}
           >

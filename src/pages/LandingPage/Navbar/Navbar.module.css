@@ -64,8 +64,8 @@
 }
 
 .buttonContainer.hidden {
-    opacity: 0;
-  }
+  opacity: 0;
+}
 
 .linkContainer {
   display: flex;

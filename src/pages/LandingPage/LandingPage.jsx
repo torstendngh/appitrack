@@ -22,7 +22,9 @@ const LandingPage = ({}) => {
             <Logo size={32} />
             <span>applyups</span>
           </span>
-          <span className={styles.badge}><Icon icon={"sparkles_16px_filled"}/> Generous Free Version</span>
+          <span className={styles.badge}>
+            <Icon icon={"sparkles_16px_filled"} /> Generous Free Version
+          </span>
           <h1 className={styles.bigTitle}>
             Organize your
             <br />

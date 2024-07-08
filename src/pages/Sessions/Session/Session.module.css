@@ -76,15 +76,15 @@
 }
 
 .acceptedJobContainer > .content > .job {
-    font-size: 16px;
-    font-weight: 500;
-    color: #94a3b8;
+  font-size: 16px;
+  font-weight: 500;
+  color: #94a3b8;
 }
 
 .acceptedJobContainer > .content > .company {
-    font-size: 18px;
-    font-weight: 500;
-    color: #64748b;
+  font-size: 18px;
+  font-weight: 500;
+  color: #64748b;
 }
 
 .buttonContainer {

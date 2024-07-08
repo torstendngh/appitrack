@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     loginWithGoogle,
     loginWithEmail,
     logout,
-    createAccountWithEmail
+    createAccountWithEmail,
   };
 
   return (

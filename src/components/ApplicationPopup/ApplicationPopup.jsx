@@ -28,24 +28,30 @@ const TextContainer = ({ label, content }) => {
 };
 
 const ApplicationPopup = ({ onClose, data, isOpen }) => {
-  const [isAddAppointmentPopupOpen, setIsAddAppointmentPopupOpen] = useState(false)
+  const [isAddAppointmentPopupOpen, setIsAddAppointmentPopupOpen] =
+    useState(false);
   return (
     <>
-    <Popup isOpen={isOpen} fullscreen onClose={onClose} title={"Application"}>
-      <div className={styles.main}>
-        <div>
-          <StatusButton data={data} />
+      <Popup isOpen={isOpen} fullscreen onClose={onClose} title={"Application"}>
+        <div className={styles.main}>
+          <div>
+            <StatusButton data={data} />
+          </div>
+          <div>
+            <Button onClick={() => setIsAddAppointmentPopupOpen(true)}>
+              Add Appointment
+            </Button>
+          </div>
+          <div>
+            Notes
+            <textarea name="" id=""></textarea>
+          </div>
         </div>
-        <div>
-          <Button onClick={() => setIsAddAppointmentPopupOpen(true)}>Add Appointment</Button>
-        </div>
-        <div>
-          Notes
-          <textarea name="" id=""></textarea>
-        </div>
-      </div>
-    </Popup>
-    <AddAppointmentPopup onClose={() => setIsAddAppointmentPopupOpen(false)} isOpen={isAddAppointmentPopupOpen}/>
+      </Popup>
+      <AddAppointmentPopup
+        onClose={() => setIsAddAppointmentPopupOpen(false)}
+        isOpen={isAddAppointmentPopupOpen}
+      />
     </>
   );
 };

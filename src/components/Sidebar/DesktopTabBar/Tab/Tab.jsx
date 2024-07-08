@@ -10,10 +10,10 @@ const Tab = ({ label, icon, iconActive, to }) => {
       }
       to={to}
     >
-      {({isActive}) => (
+      {({ isActive }) => (
         <>
-        <Icon icon={isActive ? iconActive : icon} />
-      {label}
+          <Icon icon={isActive ? iconActive : icon} />
+          {label}
         </>
       )}
     </NavLink>

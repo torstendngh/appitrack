@@ -9,7 +9,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const rootElement = document.getElementById('root');
+    const rootElement = document.getElementById("root");
 
     const handleScroll = () => {
       if (rootElement.scrollTop > 0) {
@@ -19,15 +19,17 @@ const Navbar = () => {
       }
     };
 
-    rootElement.addEventListener('scroll', handleScroll);
+    rootElement.addEventListener("scroll", handleScroll);
     return () => {
-      rootElement.removeEventListener('scroll', handleScroll);
+      rootElement.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <div className={`${styles.main} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={`${styles.logoContainer} ${!scrolled ? styles.hidden : ""}`}>
+      <div
+        className={`${styles.logoContainer} ${!scrolled ? styles.hidden : ""}`}
+      >
         <Logo size={24} />
         applyups
       </div>
@@ -37,7 +39,11 @@ const Navbar = () => {
         <a href="#faq">FAQ</a>
         <a href="#about">About</a>
       </div>
-      <div className={`${styles.buttonContainer} ${!scrolled ? styles.hidden : ""}`}>
+      <div
+        className={`${styles.buttonContainer} ${
+          !scrolled ? styles.hidden : ""
+        }`}
+      >
         <Button>{currentUser ? "Logout" : "Login"}</Button>
         <Button isPrimary>{currentUser ? "Dashboard" : "Sign up"}</Button>
       </div>

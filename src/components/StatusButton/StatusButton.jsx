@@ -9,8 +9,8 @@ const StatusButton = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
   const onClickHandler = (e) => {
     e.stopPropagation();
-    setIsActive((x) => !x)
-  }
+    setIsActive((x) => !x);
+  };
   return (
     <>
       <Button
@@ -21,7 +21,11 @@ const StatusButton = ({ data }) => {
         {applicationStatus[data.status].label}
         <Icon icon={applicationStatus[data.status].icon} />
       </Button>
-      <StatusSelectionPopup isOpen={isActive} data={data} onClose={() => setIsActive(false)}/>
+      <StatusSelectionPopup
+        isOpen={isActive}
+        data={data}
+        onClose={() => setIsActive(false)}
+      />
     </>
   );
 };

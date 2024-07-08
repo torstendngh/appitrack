@@ -34,22 +34,28 @@ const Applications = ({}) => {
     if (searchQuery !== "") {
       return applications.filter(
         (application) =>
-          application.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          application.jobTitle
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
           application.company.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     const activeApplications = applications.filter(
-      (application) => application.status !== "withdrawn" && application.status !== "rejected"
+      (application) =>
+        application.status !== "withdrawn" && application.status !== "rejected"
     );
     const inactiveApplications = applications.filter(
-      (application) => application.status === "withdrawn" || application.status === "rejected"
+      (application) =>
+        application.status === "withdrawn" || application.status === "rejected"
     );
 
     return [...activeApplications, ...inactiveApplications];
   };
 
-  const filteredApplications = filterAndSortApplications(currentSession?.applications);
+  const filteredApplications = filterAndSortApplications(
+    currentSession?.applications
+  );
 
   return (
     <>
@@ -71,16 +77,24 @@ const Applications = ({}) => {
             <h1 className={styles.title}>
               {searchQuery !== "" ? `Search: ${searchQuery}` : "Applications"}
             </h1>
-            <HeaderContainer title={"Active"}/>
+            <HeaderContainer title={"Active"} />
             {filteredApplications
-              ?.filter(application => application.status !== "withdrawn" && application.status !== "rejected")
+              ?.filter(
+                (application) =>
+                  application.status !== "withdrawn" &&
+                  application.status !== "rejected"
+              )
               .map((application) => (
                 <Application key={application.id} data={application} />
               ))}
             <div className={styles.devider}></div>
-            <HeaderContainer title={"Inactive"}/>
+            <HeaderContainer title={"Inactive"} />
             {filteredApplications
-              ?.filter(application => application.status === "withdrawn" || application.status === "rejected")
+              ?.filter(
+                (application) =>
+                  application.status === "withdrawn" ||
+                  application.status === "rejected"
+              )
               .map((application) => (
                 <Application key={application.id} data={application} />
               ))}

@@ -23,7 +23,12 @@ const MobileTabBar = ({}) => {
         iconActive={"sessions_filled"}
         label={"Sessions"}
       />
-      <Tab to={"/dashboard/contacts"} icon={"contacts"} iconActive={"contacts_filled"} label={"Contacts"} />
+      <Tab
+        to={"/dashboard/contacts"}
+        icon={"contacts"}
+        iconActive={"contacts_filled"}
+        label={"Contacts"}
+      />
       <Tab
         to={"/dashboard/settings"}
         icon={"settings"}

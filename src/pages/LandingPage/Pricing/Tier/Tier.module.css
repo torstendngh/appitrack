@@ -65,18 +65,18 @@
 }
 
 .badge {
-    position: absolute;
-    top: -6px;
-    right: 11px;
-    background-color: #2563eb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 11px 22px;
-    border-radius: 5.5px 11px 5.5px 11px;
+  position: absolute;
+  top: -6px;
+  right: 11px;
+  background-color: #2563eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 22px;
+  border-radius: 5.5px 11px 5.5px 11px;
 }
 
 .badge > span {
-    color: white;
-    font-weight: 600;
+  color: white;
+  font-weight: 600;
 }

@@ -97,7 +97,7 @@ const Session = ({ session }) => {
         label={"Session Name"}
         isOpen={isEditPopupOpen}
         onClose={() => setIsEditPopupOpen((x) => !x)}
-        onSave={(newName) => editSession(session.id, {name: newName})}
+        onSave={(newName) => editSession(session.id, { name: newName })}
       />
     </>
   );

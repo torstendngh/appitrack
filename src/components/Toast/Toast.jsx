@@ -1,9 +1,9 @@
 // Toast.js
-import React, { useEffect, useState, useRef } from 'react';
-import styles from'./Toast.module.css';
-import { createPortal } from 'react-dom';
-import { createRoot } from 'react-dom/client';
-import Icon from '../Icon/Icon';
+import React, { useEffect, useState, useRef } from "react";
+import styles from "./Toast.module.css";
+import { createPortal } from "react-dom";
+import { createRoot } from "react-dom/client";
+import Icon from "../Icon/Icon";
 
 const Toast = ({ message, onClose }) => {
   const [remainingTime, setRemainingTime] = useState(3000);
@@ -38,8 +38,12 @@ const Toast = ({ message, onClose }) => {
   };
 
   return (
-    <div className={styles.main} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <Icon icon={"tick_filled"}/>
+    <div
+      className={styles.main}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Icon icon={"tick_filled"} />
       <span>{message}</span>
     </div>
   );
@@ -56,7 +60,7 @@ let toastRoot = null;
 
 const showToast = (message) => {
   if (!toastRoot) {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     document.body.appendChild(div);
     toastRoot = createRoot(div);
   }

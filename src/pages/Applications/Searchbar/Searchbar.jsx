@@ -1,11 +1,16 @@
 import Icon from "../../../components/Icon/Icon";
 import styles from "./Searchbar.module.css";
 
-const Searchbar = ({onChange, value}) => {
+const Searchbar = ({ onChange, value }) => {
   return (
     <div className={styles.main}>
       <Icon icon={"magnifyingGlass"} />
-      <input type="search" placeholder="Search.." onChange={onChange} value={value}/>
+      <input
+        type="search"
+        placeholder="Search.."
+        onChange={onChange}
+        value={value}
+      />
     </div>
   );
 };

@@ -9,11 +9,11 @@ const Button = ({
   style,
   type = "button",
   className,
-  isDisabled = false
+  isDisabled = false,
 }) => {
   const handleClick = (e) => {
-    e.stopPropagation()
-    onClick(e)
+    e.stopPropagation();
+    onClick(e);
   };
   return (
     <button
